@@ -8,29 +8,26 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Profil from './screens/Profil';
 import Home from './screens/Home';
 
+
 //import MaterialCommunityIcons from 'react-native-vector-icons';
 
 
 
 //const Stack = createNativeStackNavigator();
-const Tab =  createBottomTabNavigator();
+const Tab = createBottomTabNavigator();
 
 function App() {
   return (
     <NavigationContainer>
       <Tab.Navigator
-       screenOptions={{
-        tabBarStyle: { position: 'absolute' },
-        tabBarActiveTintColor: 'white',
-        tabBarInactiveTintColor: 'white',
-        tabBarInactiveBackgroundColor: '#729D39',
-        tabBarActiveBackgroundColor: '#729D39',
-        
-        
-        
-       
-      }}>
-        <Tab.Screen name='Profil' component={Profil}  />
+        screenOptions={{
+          tabBarStyle: { position: 'absolute' },
+          tabBarActiveTintColor: 'white',
+          tabBarInactiveTintColor: 'white',
+          tabBarInactiveBackgroundColor: '#729D39',
+          tabBarActiveBackgroundColor: '#729D39',
+        }}>
+        <Tab.Screen name='Profil' component={Profil} />
         <Tab.Screen name='Home' component={Home} />
         <Tab.Screen name='FidanDik' component={Map} />
       </Tab.Navigator>
