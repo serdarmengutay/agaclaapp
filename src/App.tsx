@@ -7,11 +7,11 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import Profil from './screens/Profil';
 import Home from './screens/Home';
+import SignIn from './screens/SignIn';
+import LogIn from './screens/LogIn';
 
 
 //import MaterialCommunityIcons from 'react-native-vector-icons';
-
-
 
 //const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -30,6 +30,8 @@ function App() {
         <Tab.Screen name='Profil' component={Profil} />
         <Tab.Screen name='Home' component={Home} />
         <Tab.Screen name='FidanDik' component={Map} />
+        <Tab.Screen name='SignIn' component={SignIn} />
+        <Tab.Screen name='LogIn' component={LogIn} />
       </Tab.Navigator>
     </NavigationContainer>
   );

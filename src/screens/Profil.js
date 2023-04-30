@@ -1,25 +1,22 @@
 import React, { useState } from "react";
-import { SafeAreaView, Text, Button, StyleSheet, Input, View } from "react-native";
+import { SafeAreaView, Text, Button, StyleSheet, View } from "react-native";
 
 
 
 function Profil({ navigation }) {
 
-    // function navigateToPage(){
-    //     navigation.navigate('FidanDik')
-    // }
+
 
     function goToMemberSign() {
         navigation.navigate('SignIn')
     }
 
-    const [text, onChangeText] = useState('');
-    const [number, onChangeNumber] = useState('');
+    // const [text, onChangeText] = useState('');
+    // const [number, onChangeNumber] = useState('');
 
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.body_container}>
-
                 <Button title="SignIn" onPress={goToMemberSign} />
             </View>
 

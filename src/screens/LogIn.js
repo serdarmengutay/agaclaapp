@@ -1,26 +1,15 @@
-import React, { useState } from "react";
-import { SafeAreaView, Text, StyleSheet, TouchableOpacity } from "react-native";
+import React, { useState } from 'react';
+import { SafeAreaView, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
 import Input from '../component/InputCard/Input';
 import Button from "../component/Button/Button";
 
 import Lottie from 'lottie-react-native';
 
+function LogIn({ navigation }) {
 
-function SignIn({ navigation }) {
-
-    const [userName, setUserName] = useState(null);
     const [userMail, setUserMail] = useState(null);
-    const [userPhoneNumber, setUserPhoneNumber] = useState(null);
     const [userPassword, setUserPassword] = useState(null);
-
-
-
-    //TÜÜM ALANLARI DOLDURMAN GEREKTİĞNİ ÇALIŞTIRAN FONKSİYON GELECEK!
-
-
-
-
 
     return (
         <SafeAreaView style={styles.container}>
@@ -28,24 +17,23 @@ function SignIn({ navigation }) {
             <Lottie
                 style={styles.lottie}
                 source={require('../assets/logo.json')} autoPlay />
-            <Text style={styles.header}>Kayıt Ol</Text>
-            <Input
-                placeholder="İsim"
-                onChangeText={setUserName} />
+            <Text style={styles.header}>Giriş Yap</Text>
             <Input
                 placeholder="Email"
                 onChangeText={setUserMail} />
             <Input
-                placeholder="Telefon numarası "
-                onChangeText={setUserPhoneNumber} />
-            <Input
                 placeholder="Şifre"
                 onChangeText={setUserPassword} />
-            <Button
-                text="Kayıt ol" />
             <TouchableOpacity
-                onPress={() => navigation.navigate('LogIn')}>
-                <Text style={styles.text}>Hesabın var mı? Giriş Yap </Text>
+                onPress={() => navigation.navigate('')}>
+                <Text style={styles.text}>Şifreni mi Unuttun?</Text>
+            </TouchableOpacity>
+            <Button
+                text="Giriş Yap" />
+
+            <TouchableOpacity
+                onPress={() => navigation.navigate('SigIn')}>
+                <Text style={styles.text}>Hesabın yok mu? Kayıt Ol </Text>
             </TouchableOpacity>
 
 
@@ -55,7 +43,8 @@ function SignIn({ navigation }) {
     )
 }
 
-export default SignIn;
+export default LogIn;
+
 
 const styles = StyleSheet.create({
     container: {

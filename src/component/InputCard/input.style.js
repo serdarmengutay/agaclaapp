@@ -1,34 +1,30 @@
-// import { StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 
-// export default StyleSheet.create({
-//     container: {
-//         flex: 1,
-//         backgroundColor: 'red',
-//         //backgroundColor: '#898989',
-//         //position: 'absolute',
-//     },
-//     body_container: {
-//         // backgroundColor: 'pink',
+export default StyleSheet.create({
+    container: {
 
-//         //position: 'absolute',
-//     },
-//     input: {
-//         //position: 'absolute',
-//         width: 343,
-//         height: 47,
-//         left: 24,
-//         top: 345,
-//         backgroundColor: '#FFFFFF',
-//         borderColor: '#C8C8C8',
-//         borderStyle: 'solid',
-//         borderRadius: 8,
-//         borderWidth: 1,
+        //backgroundColor: 'red',
+        padding: 5,
+        //alignContent: 'center',
+        alignContent: 'flex-end',
+        //top: 345,
 
 
+    },
+    textInput: {
 
-//         // height: 40,
-//         // margin: 12,
-//         // borderWidth: 1,
-//         // padding: 10,
-//     },
-// })
+        backgroundColor: '#FFFFFF',
+        borderColor: '#C8C8C8',
+        width: 343,
+        height: 47,
+        borderRadius: 8,
+        left: 24,
+        //top: 312,
+        borderStyle: 'solid',
+        //alignContent: 'space-between',
+        borderWidth: 1,
+    },
+    label: {
+
+    },
+})
