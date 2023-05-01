@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-// import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Map from './screens/Map';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
@@ -10,10 +10,12 @@ import Home from './screens/Home';
 import SignIn from './screens/SignIn';
 import LogIn from './screens/LogIn';
 
+// import { TabNavigator } from './component/TabNavigator/TabNavigator';
+
 
 //import MaterialCommunityIcons from 'react-native-vector-icons';
 
-//const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 function App() {
@@ -26,6 +28,7 @@ function App() {
           tabBarInactiveTintColor: 'white',
           tabBarInactiveBackgroundColor: '#729D39',
           tabBarActiveBackgroundColor: '#729D39',
+          headerShown: false,
         }}>
         <Tab.Screen name='Profil' component={Profil} />
         <Tab.Screen name='Home' component={Home} />
@@ -34,6 +37,8 @@ function App() {
         <Tab.Screen name='LogIn' component={LogIn} />
       </Tab.Navigator>
     </NavigationContainer>
+
+
   );
 }
 
