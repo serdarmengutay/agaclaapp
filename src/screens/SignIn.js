@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { SafeAreaView, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { SafeAreaView, Text, StyleSheet, TouchableOpacity, View } from "react-native";
+
+import { Formik } from 'formik';
 
 import Input from '../component/InputCard/Input';
 import Button from "../component/Button/Button";
@@ -9,10 +11,14 @@ import Lottie from 'lottie-react-native';
 
 function SignIn({ navigation }) {
 
-    const [userName, setUserName] = useState(null);
-    const [userMail, setUserMail] = useState(null);
-    const [userPhoneNumber, setUserPhoneNumber] = useState(null);
-    const [userPassword, setUserPassword] = useState(null);
+    function handleSignIn(values) {
+        console.log(values);
+    }
+
+    // const [userName, setUserName] = useState(null);
+    // const [userMail, setUserMail] = useState(null);
+    // const [userPhoneNumber, setUserPhoneNumber] = useState(null);
+    // const [userPassword, setUserPassword] = useState(null);
 
 
 
@@ -29,27 +35,41 @@ function SignIn({ navigation }) {
                 style={styles.lottie}
                 source={require('../assets/logo.json')} autoPlay />
             <Text style={styles.header}>Kayıt Ol</Text>
-            <Input
-                placeholder="İsim"
-                onChangeText={setUserName} />
-            <Input
-                placeholder="Email"
-                onChangeText={setUserMail} />
-            <Input
-                placeholder="Telefon numarası "
-                onChangeText={setUserPhoneNumber} />
-            <Input
-                placeholder="Şifre"
-                onChangeText={setUserPassword} />
-            <Button
-                text="Kayıt ol" />
-            <TouchableOpacity
-                onPress={() => navigation.navigate('LogIn')}>
-                <Text style={styles.text}>Hesabın var mı? Giriş Yap </Text>
-            </TouchableOpacity>
+            <Formik
+                initialValues={{ UserName: '', UserMail: '', UserPhoneNumber: '', UserPassword: '', }}
+                onSubmit={handleSignIn}>
+                {({ handleSubmit, handleChange, values }) => (
 
+                    <View>
+                        <Input
+                            placeholder="İsim"
+                            value={values.UserName}
+                            onChangeText={handleChange('UserName')} />
+                        <Input
+                            placeholder="Email"
+                            value={values.UserMail}
+                            onChangeText={handleChange('UserMail')} />
+                        <Input
+                            placeholder="Telefon numarası "
+                            value={values.UserPhoneNumber}
+                            onChangeText={handleChange('UserPhoneNumber')}
+                        />
+                        <Input
+                            placeholder="Şifre"
+                            value={values.UserPassword}
+                            onChangeText={handleChange('UserPassword')}
+                        />
+                        <Button
+                            text="Kayıt ol"
+                            onPress={handleSubmit} />
+                        <TouchableOpacity
+                            onPress={() => navigation.navigate('LogIn')}>
+                            <Text style={styles.text}>Hesabın var mı? Giriş Yap </Text>
+                        </TouchableOpacity>
 
-
+                    </View>
+                )}
+            </Formik>
         </SafeAreaView>
 
     )
