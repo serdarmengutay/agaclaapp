@@ -1,15 +1,22 @@
 import React, { useState } from 'react';
-import { SafeAreaView, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { SafeAreaView, Text, StyleSheet, TouchableOpacity, View } from 'react-native';
+
+import { Formik } from 'formik';
 
 import Input from '../component/InputCard/Input';
 import Button from "../component/Button/Button";
 
 import Lottie from 'lottie-react-native';
 
+
 function LogIn({ navigation }) {
 
-    const [userMail, setUserMail] = useState(null);
-    const [userPassword, setUserPassword] = useState(null);
+    function handleLogin(values) {
+        console.log(values)
+    }
+
+    // const [userMail, setUserMail] = useState(null);
+    // const [userPassword, setUserPassword] = useState(null);
 
     return (
         <SafeAreaView style={styles.container}>
@@ -18,26 +25,37 @@ function LogIn({ navigation }) {
                 style={styles.lottie}
                 source={require('../assets/logo.json')} autoPlay />
             <Text style={styles.header}>Giriş Yap</Text>
-            <Input
-                placeholder="Email"
-                onChangeText={setUserMail} />
-            <Input
-                placeholder="Şifre"
-                onChangeText={setUserPassword} />
-            <TouchableOpacity
-                onPress={() => navigation.navigate('')}>
-                <Text style={styles.text}>Şifreni mi Unuttun?</Text>
-            </TouchableOpacity>
-            <Button
-                text="Giriş Yap" />
+            <Formik
+                initialValues={{ UserMail: '', UserPassword: '' }}
+                onSubmit={handleLogin}>
+                {({ handleSubmit, handleChange, values }) => (
+                    <View>
+                        <Input
+                            placeholder="Email"
+                            value={values.UserMail}
+                            onChangeText={handleChange('UserMail')}
 
-            <TouchableOpacity
-                onPress={() => navigation.navigate('SigIn')}>
-                <Text style={styles.text}>Hesabın yok mu? Kayıt Ol </Text>
-            </TouchableOpacity>
+                        />
+                        <Input
+                            placeholder="Şifre"
+                            value={values.UserPassword}
+                            onChangeText={handleChange('UserPassword')} />
+                        <TouchableOpacity
+                            onPress={() => navigation.navigate('')}>
+                            <Text style={styles.text}>Şifreni mi Unuttun?</Text>
+                        </TouchableOpacity>
+                        <Button
+                            text="Giriş Yap"
+                            onPress={handleSubmit} />
+                        <TouchableOpacity
+                            onPress={() => navigation.navigate('SigIn')}>
+                            <Text style={styles.text}>Hesabın yok mu? Kayıt Ol </Text>
+                        </TouchableOpacity>
+                    </View>
 
+                )}
 
-
+            </Formik>
         </SafeAreaView>
 
     )
