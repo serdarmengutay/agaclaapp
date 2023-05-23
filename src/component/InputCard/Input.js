@@ -1,8 +1,11 @@
 import React from "react";
-import { View, TextInput, Text } from 'react-native';
+import { View, Text, TextInput } from 'react-native';
 import styles from './input.style';
+import Icons from "../Icons/Icons";
 
-function Input({ placeholder, value, onChangeText }) {
+
+
+function Input({ placeholder, value, onChangeText, isSecure, onPress }) {
     return (
         <View style={styles.container}>
             <TextInput
@@ -10,7 +13,10 @@ function Input({ placeholder, value, onChangeText }) {
                 placeholder={placeholder}
                 onChangeText={onChangeText}
                 value={value}
+                secureTextEntry={isSecure}
+                onPressIn={onPress}
             />
+
 
         </View >
 

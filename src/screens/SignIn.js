@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { SafeAreaView, Text, StyleSheet, TouchableOpacity, View } from "react-native";
+import { SafeAreaView, Text, StyleSheet, TouchableOpacity, View, Touchable } from "react-native";
 
 import { Formik } from 'formik';
 
@@ -9,10 +9,19 @@ import Button from "../component/Button/Button";
 import Lottie from 'lottie-react-native';
 
 
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
+
 function SignIn({ navigation }) {
+    const [show, setShow] = useState(true)
+    const [isSecure, setisSecure] = useState(true)
 
     function handleSignIn(values) {
         console.log(values);
+    }
+
+    function showEye() {
+        setShow(!show)
+        setisSecure(!isSecure)
     }
 
     // const [userName, setUserName] = useState(null);
@@ -54,11 +63,33 @@ function SignIn({ navigation }) {
                             value={values.UserPhoneNumber}
                             onChangeText={handleChange('UserPhoneNumber')}
                         />
+
                         <Input
                             placeholder="Şifre"
                             value={values.UserPassword}
                             onChangeText={handleChange('UserPassword')}
+                            isSecure={isSecure}
+
+                            onPress={() => {
+
+                                <TouchableOpacity onPress={showEye} style={styles.invisibleIcon} >
+                                    {show ? <FontAwesome5
+                                        name="eye-slash"
+                                        size={14}
+                                        style={styles.invisibleIcon}
+
+                                    />
+                                        : <FontAwesome5
+                                            name="eye"
+                                            size={14}
+                                            style={styles.invisibleIcon}
+                                        />}
+                                </TouchableOpacity>
+
+                            }}
+
                         />
+
                         <Button
                             text="Kayıt ol"
                             onPress={handleSubmit} />
@@ -108,4 +139,11 @@ const styles = StyleSheet.create({
         color: '#9C9C9C',
 
     },
+    invisibleIcon: {
+        width: 20,
+        height: 20,
+        bottom: 35,
+        left: 340,
+        backgroundColor: 'red',
+    }
 })
