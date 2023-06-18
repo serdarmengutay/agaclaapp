@@ -55,16 +55,16 @@ function LogIn({ navigation }) {
 
 
                         {/* <SvgXml width="15" height="75%" xml={invisible} /> */}
-                        <TouchableOpacity
-                            onPress={() => navigation.navigate('')}>
-                            <Text style={styles.text}>Şifreni mi Unuttun?</Text>
-                        </TouchableOpacity>
+   
                         <Button
                             text="Giriş Yap"
                             onPress={handleSubmit} />
                         <TouchableOpacity
+                        style={styles.forgotPass}
                             onPress={() => navigation.navigate('SigIn')}>
                             <Text style={styles.text}>Hesabın yok mu? Kayıt Ol </Text>
+                            <Text style={styles.text}>Şifreni mi Unuttun?</Text>
+
                         </TouchableOpacity>
                     </View>
 
@@ -100,17 +100,18 @@ const styles = StyleSheet.create({
         fontSize: 24,
         fontWeight: 600,
     },
+    forgotPass: {
+        padding: 10
+    },
 
     text: {
         //font family eklencek
-        width: 181,
-        height: 17,
-        left: 105,
         fontStyle: 'normal',
+        padding: 5,
+        textAlign: 'center',
         fontWeight: 500,
         fontSize: 14,
         color: '#9C9C9C',
-
     },
 
 })

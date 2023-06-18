@@ -11,7 +11,7 @@ import SignIn from './screens/SignIn';
 import LogIn from './screens/LogIn';
 
 
-// import { TabNavigator } from './component/TabNavigator/TabNavigator';
+//  import { TabNavigator } from './component/TabNavigator/TabNavigator';
 
 
 //import MaterialCommunityIcons from 'react-native-vector-icons';
