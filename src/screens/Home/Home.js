@@ -1,10 +1,10 @@
 import React from "react";
-import { SafeAreaView, Text } from "react-native"; 
+import { SafeAreaView, Text } from "react-native";
 
-function Home ({navigation}) {
+function Home({ navigation }) {
 
-    
-    return(
+
+    return (
         <SafeAreaView>
             <Text>HomePage!!</Text>
         </SafeAreaView>

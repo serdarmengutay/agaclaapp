@@ -1,20 +1,23 @@
-import React, { useState } from 'react';
-import { SafeAreaView, Text, StyleSheet, TouchableOpacity, View } from 'react-native';
+import React from "react";
+
+import { SafeAreaView, Text, StyleSheet, TouchableOpacity, View, Image } from 'react-native';
+import styles from './Login.style';
+
+
 
 import { Formik } from 'formik';
 
-import Input from '../component/InputCard/Input';
-import Button from "../component/Button/Button";
+import Input from '../../../component/InputCard';
+import Button from "../../../component/Button";
 
 import Lottie from 'lottie-react-native';
-
-// import Icons from '../component/Icons/Icons';
-// import { SvgXml } from 'react-native-svg';
-// import invisible from '../../src/assets/icons/invisible.svg'
+// import { Image } from "react-native-svg";
 
 
 
-function LogIn({ navigation }) {
+
+
+function Login({ navigation }) {
 
     function handleLogin(values) {
         console.log(values)
@@ -26,10 +29,15 @@ function LogIn({ navigation }) {
     return (
         <SafeAreaView style={styles.container}>
 
+            <Image
+                source={require('../../../assets/icon/login.png')}
+                style={{ width: 170, height: 170, alignSelf: 'center' }}
+            />
 
-            <Lottie
+
+            {/* <Lottie
                 style={styles.lottie}
-                source={require('../assets/logo.json')} autoPlay />
+                source={require('../../../assets/logo.json')} autoPlay /> */}
             <Text style={styles.header}>Giriş Yap</Text>
             <Formik
                 initialValues={{ UserMail: '', UserPassword: '' }}
@@ -74,44 +82,15 @@ function LogIn({ navigation }) {
         </SafeAreaView>
 
     )
-}
 
-export default LogIn;
+};
 
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#F9F9F9',
-    },
-    lottie: {
-        height: 259,
-        left: 5,
-    },
+export default Login;
 
-    header: {
-        color: '#34670C',
-        width: 92,
-        height: 29,
-        left: 24,
-        //top: 294,
-        //font family gelecek
-        fontStyle: 'normal',
-        fontSize: 24,
-        fontWeight: 600,
-    },
-    forgotPass: {
-        padding: 10
-    },
 
-    text: {
-        //font family eklencek
-        fontStyle: 'normal',
-        padding: 5,
-        textAlign: 'center',
-        fontWeight: 500,
-        fontSize: 14,
-        color: '#9C9C9C',
-    },
 
-})
+
+
+
+
