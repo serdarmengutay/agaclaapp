@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "278287621925",
+    "project_id": "agaclaap",
+    "storage_bucket": "agaclaap.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:278287621925:android:e727a754e37905a497c4cc",
+        "android_client_info": {
+          "package_name": "com.agaclaa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "278287621925-i258e073tsnppnlf2cgl75bj65f7pn5j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAeZy_ngIXFL2FuZE_m_Eo67JtsJhd-Qp8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "278287621925-i258e073tsnppnlf2cgl75bj65f7pn5j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
