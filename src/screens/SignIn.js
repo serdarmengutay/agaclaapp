@@ -32,7 +32,7 @@ function SignIn({ navigation }) {
 
 
     //TÜÜM ALANLARI DOLDURMAN GEREKTİĞNİ ÇALIŞTIRAN FONKSİYON GELECEK!
-
+    //deneme
 
 
 
