@@ -5,11 +5,15 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Map from './screens/Map';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import Profil from './screens/Profil';
-import Home from './screens/Home';
-import SignIn from './screens/SignIn';
-import LogIn from './screens/LogIn';
 
+
+
+import Login from './screens/auth/Login/Login';
+import Sign from './screens/auth/Sign/Sign';
+import Home from './screens/Home';
+import Sosyal from './screens/Sosyal';
+import FidanDik from './screens/FidanDik';
+import Profil from './screens/Profil';
 
 //  import { TabNavigator } from './component/TabNavigator/TabNavigator';
 
@@ -20,6 +24,17 @@ const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 function App() {
+
+  const AuthStack = () => {
+    return (
+      <Stack.Navigator>
+        <Stack.Screen name='LoginPage' component={Login} />
+        <Stack.Screen name='SignPage' component={Sign} />
+      </Stack.Navigator>
+
+    )
+  };
+
   return (
     <NavigationContainer>
       <Tab.Navigator
@@ -31,11 +46,11 @@ function App() {
           tabBarActiveBackgroundColor: '#729D39',
           headerShown: false,
         }}>
+        <Tab.Screen options={{ headerShown: false }} name='AuthStackPages' component={AuthStack} />
+        <Tab.Screen name='AnaSayfa' component={Home} />
+        <Tab.Screen name='Sosyal' component={Sosyal} />
+        <Tab.Screen name='Fidan Dik' component={FidanDik} />
         <Tab.Screen name='Profil' component={Profil} />
-        <Tab.Screen name='Home' component={Home} />
-        <Tab.Screen name='FidanDik' component={Map} />
-        <Tab.Screen name='SignIn' component={SignIn} />
-        <Tab.Screen name='LogIn' component={LogIn} />
       </Tab.Navigator>
     </NavigationContainer>
 
