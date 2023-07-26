@@ -14,6 +14,7 @@ import Home from './screens/Home';
 import Sosyal from './screens/Sosyal';
 import FidanDik from './screens/FidanDik';
 import Profil from './screens/Profil';
+import Onboard from './screens/Onboarding/Onboard';
 
 //  import { TabNavigator } from './component/TabNavigator/TabNavigator';
 
@@ -46,6 +47,7 @@ function App() {
           tabBarActiveBackgroundColor: '#729D39',
           headerShown: false,
         }}>
+        <Tab.Screen name='Onboarding' component={Onboard} options={{ tabBarStyle: { display: 'none'}}}/>
         <Tab.Screen options={{ headerShown: false }} name='AuthStackPages' component={AuthStack} />
         <Tab.Screen name='AnaSayfa' component={Home} />
         <Tab.Screen name='Sosyal' component={Sosyal} />

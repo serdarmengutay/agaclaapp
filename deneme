@@ -1,8 +1,0 @@
-<Stack.Navigator>
-        <Stack.Screen name="Map" component={Map} options={{
-          headerShown: false
-        }} />
-      </Stack.Navigator>
-
-
-      <Tab.Screen name='FidanDikTab' component={Map} />
