@@ -7,59 +7,63 @@ import {
   TouchableOpacity,
   Image,
   Dimensions,
-} from 'react-native';
-import React, {useState, useRef} from 'react';
+} from "react-native";
+import React, { useState, useRef } from "react";
 
-const {width, height} = Dimensions.get('window');
+const { width, height } = Dimensions.get("window");
 
 const slider = [
   {
     id: 1,
-    title: 'Ağaçla',
-    desc: 'Geleceği yeşillendirmeye hazır mısın? Haydi başlayalım!',
-    image: require('../../assets/onboardImg/onboardImageOne.png'),
+    title: "Ağaçla",
+    desc: "Geleceği yeşillendirmeye hazır mısın? Haydi başlayalım!",
+    image: require("../../assets/onboardImg/onboardImageOne.png"),
   },
   {
     id: 2,
-    title: 'Fidanını dik',
-    desc: 'Seçili bölgelerden birini seç ve fidanını dik',
-    image: require('../../assets/onboardImg/onboardImageTwo.png'),
+    title: "Fidanını dik",
+    desc: "Seçili bölgelerden birini seç ve fidanını dik",
+    image: require("../../assets/onboardImg/onboardImageTwo.png"),
   },
   {
     id: 3,
-    title: 'Bağlan',
-    desc: 'Sosyal medyasını ekleyen kişiler ile bağlantı kur',
-    image: require('../../assets/onboardImg/onboardImageThree.png'),
+    title: "Bağlan",
+    desc: "Sosyal medyasını ekleyen kişiler ile bağlantı kur",
+    image: require("../../assets/onboardImg/onboardImageThree.png"),
   },
 ];
 
-const Onboard = () => {
+const Onboard = ({ navigation }) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const ref = useRef(null)
+  const ref = useRef(null);
 
-  const updateCurrentIndex = e => {
+  const updateCurrentIndex = (e) => {
     const contentOffsetX = e.nativeEvent.contentOffset.x;
     const currentIndex = Math.round(contentOffsetX / width);
     setSelectedIndex(currentIndex);
   };
 
   const goNextButton = () => {
-      const nextSlideIndex = selectedIndex + 1;
-      if (nextSlideIndex != slider.length) {
-        const offset = nextSlideIndex * width;
-        ref?.current.scrollToOffset({offset});
-        setSelectedIndex(nextSlideIndex)
-      }
-  }
+    const nextSlideIndex = selectedIndex + 1;
+    if (nextSlideIndex != slider.length) {
+      const offset = nextSlideIndex * width;
+      ref?.current.scrollToOffset({ offset });
+      setSelectedIndex(nextSlideIndex);
+    }
+    const lastSlidesIndex = slider.length - 1;
+    if (selectedIndex === lastSlidesIndex) {
+      navigation.navigate("AuthStackPages");
+    }
+  };
 
   const Skip = () => {
-    const lastSlidesIndex = slider.length -1;
+    const lastSlidesIndex = slider.length - 1;
     const offset = lastSlidesIndex * width;
-    ref?.current.scrollToOffset({offset});
-    setSelectedIndex(lastSlidesIndex)
-  }
+    ref?.current.scrollToOffset({ offset });
+    setSelectedIndex(lastSlidesIndex);
+  };
 
-  const renderSlider = ({item}) => {
+  const renderSlider = ({ item }) => {
     return (
       <View style={styles.slideCont}>
         <View style={styles.cont}>
@@ -78,9 +82,7 @@ const Onboard = () => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
-        <TouchableOpacity
-        onPress={Skip}
-        >
+        <TouchableOpacity onPress={Skip}>
           <Text style={styles.skip}>ATLA</Text>
         </TouchableOpacity>
       </View>
@@ -100,10 +102,11 @@ const Onboard = () => {
 
           <View
             style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}>
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
             {slider.map((_, index) => (
               <View
                 key={index}
@@ -117,10 +120,11 @@ const Onboard = () => {
           </View>
         </View>
         <View style={styles.footer}>
-          <TouchableOpacity 
-          onPress={goNextButton}
-          activeOpacity={0.8}
-          style={styles.nextBtn}>
+          <TouchableOpacity
+            onPress={goNextButton}
+            activeOpacity={0.8}
+            style={styles.nextBtn}
+          >
             <Text style={styles.btnText}>İlerle</Text>
           </TouchableOpacity>
         </View>
@@ -134,18 +138,18 @@ export default Onboard;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
   },
   header: {
     flex: 0.15,
-    alignItems: 'flex-end',
-    justifyContent: 'center',
+    alignItems: "flex-end",
+    justifyContent: "center",
     paddingHorizontal: 16,
   },
   skip: {
-    color: '#898989',
+    color: "#898989",
     fontSize: 16,
-    fontFamily: 'Montserrat-SemiBold',
+    fontFamily: "Montserrat-SemiBold",
   },
   body: {
     flex: 1,
@@ -156,23 +160,23 @@ const styles = StyleSheet.create({
   slideCont: {
     flex: 1,
     width,
-    alignItems: 'center',
+    alignItems: "center",
   },
   cont: {
-    alignItems: 'center',
+    alignItems: "center",
     flex: 1,
   },
   title: {
-    color: '#34670c',
+    color: "#34670c",
     fontSize: 48,
-    fontFamily: 'Montserrat-SemiBold',
+    fontFamily: "Montserrat-SemiBold",
   },
   desc: {
-    color: '#898989',
+    color: "#898989",
     fontSize: 16,
-    fontFamily: 'Montserrat-SemiBold',
+    fontFamily: "Montserrat-SemiBold",
     paddingHorizontal: 50,
-    textAlign: 'center',
+    textAlign: "center",
     marginTop: 15,
     marginBottom: 25,
   },
@@ -184,31 +188,31 @@ const styles = StyleSheet.create({
     borderRadius: 13,
     width: 110,
     height: 13,
-    backgroundColor: '#8FBD4F',
+    backgroundColor: "#8FBD4F",
   },
   indicator: {
     borderRadius: 13,
     width: 13,
     height: 13,
-    backgroundColor: '#8FBD4F',
+    backgroundColor: "#8FBD4F",
     marginHorizontal: 7,
   },
   footer: {
     flex: 0.2,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
   nextBtn: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#34670c',
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#34670c",
     height: 40,
     width: 115,
-    borderRadius: 20
+    borderRadius: 20,
   },
   btnText: {
     fontSize: 16,
-    fontFamily: 'Montserrat-SemiBold',
-    color: '#fff'
-  }
+    fontFamily: "Montserrat-SemiBold",
+    color: "#fff",
+  },
 });
